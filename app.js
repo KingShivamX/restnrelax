@@ -1,8 +1,7 @@
-// necessary to require it at top
+// requiring Environment Variables
 if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
-} // to not to use in produnction satage.
-
+};
 // requiring packages
 const express = require("express");
 const ejsMate = require("ejs-mate");        
@@ -49,12 +48,12 @@ const store = MongoStore.create({
     crypto: { // to encrypt secret, we use crypto.
         secret: process.env.SECRET,
     },
-    touchAfter: 24 * 3600, // in seconds, session update.
+    touchAfter: 24 * 3600, // in seconds, session update after 24 hours.
 }); // this information should be passed in session
 
 store.on("error", ()=>{
     console.log("ERROR in MONGO SESSION STORE", err)
-});
+}); // if error
 
 // session options
 const sessionOptions = {
@@ -137,14 +136,13 @@ app.all("*", (req, res, next)=> {
 // middleware to handelk error
 app.use((err, req, res, next)=>{
     let {status = 500, message = "Something Went Wrong"} = err;
-    console.log(err.stack) // that whole info where error started.
+    // console.log(err.stack) // that whole info where error started.
     // console.log("=>", err.message, "=>", err.status, "=>", err.name);
     res.status(status).render("./listings/error.ejs", { err });
 });
 
 ///////////////////////////////////////////////////////////////
 ///////////////////// mongoDB live listning setup
-
 async function main(){
     // await mongoose.connect("mongodb://127.0.0.1:27017/restnrelax"); // localhost
     await mongoose.connect(dburl); // atlas cloud db.

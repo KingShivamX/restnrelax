@@ -125,11 +125,22 @@ module.exports.uploadEdited = async (req, res) => {
         await listing.save();
     };
 
+    ///// point map update setup
+    let checkLocation = Listing.findById(id);
+    if (checkLocation.location !== newListings.location) {    
+        let response = await geocodingClient.forwardGeocode({
+            query: newListings.location,
+            limit: 1,
+        }).send();
+        listing.geometry =  response.body.features[0].geometry;
+        let savedListing = await listing.save();
+    };
+
     req.flash("success", "Listing Updated!");
     res.redirect(`/listing/${id}`);
 };
 
-// delete Listing
+// delete Listingco
 module.exports.destroyListing = async (req, res)=> {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
