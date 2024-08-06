@@ -1,0 +1,192 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container {
+    flex: 1;
+}
+/* hr{
+    border: 2px solid black;
+    color: #02020B;
+} */
+
+/* Navbar style */
+
+.navbar {
+    height: 5.5rem;
+    background-color: #f4f4f4;
+}
+
+.fa-compass {
+    color: #0D6EFD;
+}
+
+.nav-link {
+    /* this !important will over power bootstrap */
+    color: #222222 !important;
+}
+
+.navbar-brand img {
+    height: 5rem;
+}
+.navbar-nav a {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.search-btn {
+    width: 10rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 25px;
+}
+
+.search-input {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 1rem;
+}
+
+/* Footer Style */
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 8rem;
+    background-color: #f4f4f4;
+}
+
+.f-info-socail {
+    display: flex;
+    gap: 1.6rem;
+}
+
+.f-info-socail i {
+    font-size: 1.5rem;
+} 
+
+/* Homwepaage cards style */
+
+.index-page-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 20rem;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.card-tex p {
+    font-weight: 400 !important;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+    transition-duration: 0.5s;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+.add-btn {
+    background-color: #02020B !important;
+    border: none !important;
+}
+
+
+/* edit page */
+
+.edit-btn{
+    background-color: #02020B !important;
+    border: none !important;
+}
+
+
+/* show page */
+
+.showPage-img {
+    height: 35vh;
+}
+
+.show-btns {
+    display:flex ;
+}
+
+.show-btn1 {
+    background-color: #02020B !important;
+    border: none !important;
+}
+
+.show-btn2 {
+    background-color: #0f0f1a !important;
+    border: none !important;
+}
+
+/* map styling */
+
+#map { 
+    height: 50vh;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+/* filter bar */
+#filters {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+.filter {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    opacity: 0.8;
+}
+.filter i {
+    font-size: 25px;
+}
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+.filter:hover p {
+    text-decoration: underline;
+}
+.tax-toggle {
+    border:  1px solid black;
+    border-radius: 1rem;
+    height: 3rem;
+    padding: 0.7rem;
+    margin-left: auto;
+}
+.hidden {
+    display: none;
+}

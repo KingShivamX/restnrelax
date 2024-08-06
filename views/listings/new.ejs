@@ -1,0 +1,57 @@
+<%- layout("./layouts/boilorplate.ejs") %>
+<body>
+<div class="row">
+    <div class="col col-8 offset-2">
+        <br>
+    <h3>Create New Listing</h3>
+    <!-- novalidate to add bootstrap styling for 'required browser specific mesdsages'. -->
+    <!-- "needs-validation"  class too.-->
+     <!-- fom sends default data in url encoded format -->
+    <!-- enctype="multipart/form-data", is to make form capable of sending files -->
+    <form method="post" action="/listing" novalidate class="needs-validation" enctype="multipart/form-data">
+        <!-- using this a object will be sent to post, named listing, having all name:value pairs -->
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="listing[title]" id="title" class="form-control" placeholder="Enter a Title" required>
+            <div class="valid-feedback">Title Looks Good</div>
+            <div class="invalid-feedback">Title is Required</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="text" name="listing[description]" id="description" class="form-control" placeholder="Enter Description"  required></textarea>
+            <div class="invalid-feedback">Description is Required</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>
+            <input type="file" name="listing[image]" id="image" class="form-control" required>
+            <div class="invalid-feedback">Please Upload a Image</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" name="listing[price]" id="price" class="form-control" placeholder="Enter Price" required>
+            <div class="invalid-feedback">Please Enter Price</div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" name="listing[location]" id="location" class="form-control" placeholder="Enter Location" required>    
+                <div class="invalid-feedback">Location is Required</div>
+            </div class="mb-3">
+
+            <div class="mb-6 col-md-6">
+                <label for="country" class="form-label">Country</label>
+                <%- include("../includes/countries.ejs") %>
+                <div class="invalid-feedback">Country is Required</div>
+            </div>
+
+        </div>
+        <button class="btn btn-dark add-btn">Create New</button>
+        <br><br><br>
+    </form>
+</div>
+</div>
+</body>
