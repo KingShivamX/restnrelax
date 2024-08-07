@@ -3,7 +3,13 @@
     <div class="row mt-4">
         <div class="col col-8 offset-2">
             <h3>SignUp on Rest&Relax</h3><br>
-            <form action="/signup" method="post" class="needs-validation" novalidate>
+            <form action="/signup" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full name</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                    <div class="valid-feedback">Name Looks Good</div>
+                    <div class="invalid-feedback">Name is Required</div>
+                </div>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" name="username" id="username" class="form-control" required>
@@ -16,6 +22,10 @@
                     <div class="valid-feedback">Email Looks Good</div>
                     <div class="invalid-feedback">Email is Required</div>
                 </div>
+                <div class="mb-3">
+                    <label for="profile" class="form-label">Profile Picture</label>
+                    <input type="file" name="profile" id="username" class="form-control">
+                </div>  
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control" required>

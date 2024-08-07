@@ -4,6 +4,11 @@ const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
 const { saveRedirectUrl } = require("../utils/middleware.js");
 const controller = require("../controllers/user.js");
+const multer = require("multer");
+const {storage} = require("../cloudConfig.js");
+// cloud Storage.
+const upload = multer({ storage });
+// it will se saved to direct cloud storage.
 
 // // //////////////////////////////////////////////////////////////
 // using router.route, to group together routes of same paths.
@@ -11,7 +16,8 @@ const controller = require("../controllers/user.js");
 // router.route "/signup"
 router.route("/signup")
 .get(controller.renderSignup)
-.post(wrapAsync(controller.signup));
+.post(upload.single("profile"), 
+    wrapAsync(controller.signup));
 
 // router.route "/login"
 router.route("/login")

@@ -79,6 +79,7 @@ module.exports.showListing = async (req, res)=>{
         // if this res.redirect() sended, further redirect/render/send will throw error.
         // res.status or res.locals are setters they do not send, so they dosent effect.
     };
+
     // console.log(listing.owner.id)
     res.render("./listings/show.ejs", { listing });
 };

@@ -3,7 +3,7 @@ const Review = require("../models/review");
 
 ////// ] creating controllers for routes of Reviews
 
-// delete review route by deleting review
+// create new review
 module.exports.createReview = async(req, res,)=>{
     let listing = await Listing.findById(req.params.id);
     let newReview = new Review(req.body.review);

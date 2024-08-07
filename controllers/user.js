@@ -10,8 +10,15 @@ module.exports.renderSignup = (req, res)=> {
 // signup
 module.exports.signup = async(req, res)=> {
     try {
-        let { username, email, password } = req.body;
-        let newUser = new User({email, username});
+        let { username, email, password , name, } = req.body;
+        let newUser = new User({email, username, name});
+        let filename = req.file.filename;
+
+        url = req.file.path;
+        url = url.replace("/upload", "/upload/h_50");
+
+        newUser.profile = { url, filename };
+
         // static method register() of model-"User" to save userinfo in DB.
         let signedUser = await User.register(newUser, password);
         // method=> register(user, password, callback);
@@ -23,7 +30,7 @@ module.exports.signup = async(req, res)=> {
             if(err) return next;
             req.flash("success", "Welcome to Rest&Relax");
             res.redirect("/listing");
-        })
+        });
 
     } catch(e) {
         req.flash("error", e.message);

@@ -23,12 +23,7 @@ const ListingSchema = new Schema({
         filename: {
             type: String,
             default: "Image"
-        }
-        // type: String,
-        // default: defaultImage,
-        // set: (v) => v === "" ? defaultImage : v ,
-        // // this v is the link sent by user.
-        // // if image comes and is empty sting then default is set.
+        },
     },
     price:{
         type: Number,
