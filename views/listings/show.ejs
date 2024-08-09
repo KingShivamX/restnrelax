@@ -16,9 +16,11 @@
                 &#8226; &#8377; <%= listing.price.toLocaleString("en-IN") %> <br>
                 &#8226; <%= listing.location %> <br>
                 &#8226; <%= listing.country %> <br>
+                &#8226; <%= listing.tags.join(", ") %> <br>
+
             </p>
         </div>
-    </div>  
+    </div>
 </div>
 
     <!-- buttons -->
@@ -118,7 +120,7 @@
 </div>
 </body>
 <script>
-    const mapToken =  "<%= process.env.MAP_TOKEN %>";
+    const mapToken =  "<%= process.env.MAP_TOKEN %>"
     const listing = <%- JSON.stringify(listing) %>;
     // this will be accesiable in map.js in public folder, further in this code.
     // because public folder don't have direst accces to enviornmental variables.

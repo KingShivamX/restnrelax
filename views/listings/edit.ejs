@@ -28,6 +28,29 @@
             <input type="file" name="listing[image]" id="image" class="form-control">
         </div>
 
+
+        <!--  -->
+
+        <div class="mb-3">
+            <label for="tags" class="form-label">Add The Tags Using Buttons</label>
+            <div class="tag-container mb-2" >
+                <button class="btn btn-secondary btn-tags" id="Beachfront" type="button">Beachfront</button>
+                <button class="btn btn-secondary btn-tags" id="Boats" type="button">Boats</button>
+                <button class="btn btn-secondary btn-tags" id="Camping" type="button">Camping</button>
+                <button class="btn btn-secondary btn-tags" id="Arctic" type="button">Arctic</button>
+                <button class="btn btn-secondary btn-tags" id="Castles" type="button">Castles</button>
+                <button class="btn btn-secondary btn-tags" id="Farms" type="button">Farms</button>
+                <button class="btn btn-secondary btn-tags" id="Island" type="button">Island</button>
+                <button class="btn btn-secondary btn-tags" id="Mansion" type="button">Mansion</button>
+                <button class="btn btn-secondary btn-tags" id="Rooms" type="button">Rooms</button>
+                <button class="btn btn-secondary btn-tags" id="Towers" type="button">Towers</button>
+            </div>
+            <input type="text" name="listing[tags]" id="tags" value="<%= listing.tags.join(", ") %>" class="form-control tag-input" readonly required>
+            <div class="invalid-feedback">Please Select Some Tags</div> 
+        </div>          
+
+        <!--  -->
+
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
             <input type="number" name="listing[price]" id="price" class="form-control" value="<%= listing.price %>" required>    

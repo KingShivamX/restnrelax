@@ -41,7 +41,6 @@ module.exports.uploadNew = async (req, res, next)=> {
     // if(result.error) {
     //     throw new ExpressError(404, result.error); // message from joi will be sent.
     // };
-
     /////// setup to upload image in cloud.
     let url = req.file.path;
     let filename = req.file.filename;
@@ -52,7 +51,12 @@ module.exports.uploadNew = async (req, res, next)=> {
         limit: 1,
       }).send();
 
+    ////// tags in array
+    let tags = listing.tags.split(",").map(item => item.trim());
+    listing.tags = tags; 
+
     let newListing = new Listing(listing);
+
     newListing.owner = req.user; // saving the current user as owner of listing created.  
 
     newListing.image = { url, filename }; // storing cloud image url and filename.
@@ -116,6 +120,10 @@ module.exports.uploadEdited = async (req, res) => {
     //     req.flash("error", "You don't have permission to edit!")
     //     return res.redirect(`/listing/${id}`);
     // } //// we can pass this whole code as middleware.
+
+    ////// tags in array
+    let tags = newListings.tags.split(",").map(item => item.trim());
+    newListings.tags = tags;
 
     let listing = await Listing.findByIdAndUpdate(id, newListings);
     /////// setup to upload image in cloud.

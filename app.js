@@ -122,7 +122,7 @@ app.use("/listing/:id/review", reviewRouter);
 // here :id is remained in app.js file, it will not pass in review.js file by default.
 
 app.use("/", userRouter);
-// to manage signup signin.
+// to manage signup signin.e
 // no parent route, because no comman api.
 
 ///////////////////////////////////////////////////////////////
@@ -144,8 +144,8 @@ app.use((err, req, res, next)=>{
 ///////////////////////////////////////////////////////////////
 ///////////////////// mongoDB live listning setup
 async function main(){
-    // await mongoose.connect("mongodb://127.0.0.1:27017/restnrelax"); // localhost
-    await mongoose.connect(dburl); // atlas cloud db.
+    await mongoose.connect("mongodb://127.0.0.1:27017/restnrelax2"); // localhost
+    // await mongoose.connect(dburl); // atlas cloud db.
 };
 main()
 .then((res) => console.log("Connected Established"))

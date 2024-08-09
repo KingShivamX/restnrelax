@@ -61,6 +61,9 @@ const ListingSchema = new Schema({
             required: true,
         },
     },
+    tags: {
+        type: [String],
+    }
 });
 
 // if listing deleted , then delete all that review,

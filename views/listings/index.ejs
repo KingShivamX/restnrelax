@@ -4,54 +4,46 @@
 
 <body>
 <div id="filters">
-    <div class="filter">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <div><p>Trending</p></div>
+    <div id="Beachfront"  class="filter">
+        <div><img src="assets/beach-front.jpeg" alt=""></div>
+        <div><p>Beachfront</p></div>
     </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-bed"></i></div>
-        <div><p>Rooms</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-mountain-city"></i></div>
-        <div><p>Iconic Cities</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-mountain"></i></div>
-        <div><p>Mountains</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <div><p>Castles</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <div><p>Amazing Pools</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-person-hiking"></i></div>
-        <div><p>Camping</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-tractor"></i></div>
-        <div><p>Farms</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-        <div><p>Arctic</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-umbrella-beach"></i></div>
-        <div><p>Islands</p></div>
-    </div>
-    <div class="filter">
-        <div><i class="fa-solid fa-anchor"></i></div>
+    <div id="Boats"  class="filter">
+        <div><img src="assets/boats.jpg" alt=""></div>
         <div><p>Boats</p></div>
     </div>
-    <!-- <div class="filter">
-        <div><i class="fa-solid fa-fire-burner"></i></div>
-        <div>Chef's kitchen</div>
-    </div> -->
+    <div id="Camping"  class="filter">
+        <div><img src="assets/camping.jpg" alt=""></div>
+        <div><p>Camping</p></div>
+    </div>
+    <div id="Arctic" class="filter">
+        <div><img src="assets/arctic.jpg" alt=""></div>
+        <div><p>Arctic</p></div>
+    </div>
+    <div id="Castles"  class="filter">
+        <div><img src="assets/castles.jpeg" alt=""></div>
+        <div><p>Castles</p></div>
+    </div>
+    <div id="Farms"  class="filter">
+        <div><img src="assets/farms.jpeg" alt=""></div>
+        <div><p>Farms</p></div>
+    </div>
+    <div id="Island"  class="filter">
+        <div><img src="assets/island.jpg" alt=""></div>
+        <div><p>Island</p></div>
+    </div>
+    <div id="Mansion"  class="filter">
+        <div><img src="assets/mansion.jpg" alt=""></div>
+        <div><p>Mansion</p></div>
+    </div>
+    <div id="Rooms"  class="filter">
+        <div><img src="assets/rooms.jpg" alt=""></div>
+        <div><p>Rooms</p></div>
+    </div>
+    <div id="Towers"  class="filter">
+        <div><img src="assets/towers.jpg" alt=""></div>
+        <div><p>Towers</p></div>
+    </div>
 
     <div class="tax-toggle">
         <div class="form-check-reverse form-switch">
@@ -62,10 +54,10 @@
 </div>  
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-2">
-    <% for(listing of allListing) { %>
-        <a href="/listing/<%= listing.id %>" class="listing-link">
-            <div class="card col index-page-card" >
-                <img src=" <%= listing.image.url %>" class="card-img-top" alt="Listing Image"  >
+    <% for (let listing of allListing) { %>
+        <a href="/listing/<%= listing.id %>" class="listing-link" data-tags="<%= JSON.stringify(listing.tags) %>">
+            <div class="card col index-page-card">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing Image">
                 <div class="card-img-overlay">Click To Show</div>
                 <div class="card-body">
                   <p class="card-text">
@@ -75,7 +67,53 @@
                   </p>
                 </div>
             </div>
-        </a>
+        </a>    
     <% } %>
 </div>
 </body>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btns = document.getElementsByClassName("filter"); //  all buttons
+            let activeFilter = ''; // Track the active filter
+
+            for (let btn of btns) {
+                btn.addEventListener('click', function() {
+                    const selectedTag = this.id;
+
+                    // converting node list to array
+                    [...btns].forEach(button => {
+                        button.classList.remove('tag-clicked');
+                    });
+
+                    this.classList.add('tag-clicked');
+
+                    // Check if the clicked filter is already active
+                    if (selectedTag === activeFilter) {
+                        // If the same filter is clicked again, show all listings
+                        filterListings('all');
+                        activeFilter = ''; // Reset active filter
+                    } else {
+                        // Apply the new filter
+                        filterListings(selectedTag);
+                        activeFilter = selectedTag; // Set new active filter
+                    }
+                });
+            }
+
+            function filterListings(selectedTag) {
+                const listingLinks = document.querySelectorAll('.listing-link');
+
+                listingLinks.forEach(link => {
+                    const tags = JSON.parse(link.getAttribute('data-tags'));
+
+                    if (tags.includes(selectedTag) || selectedTag === 'all') {
+                        link.style.display = 'block'; // Show listing
+                    } else {
+                        link.style.display = 'none'; // Hide listing
+                    };
+                });
+            }
+        });
+    </script>
