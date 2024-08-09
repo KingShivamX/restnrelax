@@ -86,15 +86,17 @@
                     [...btns].forEach(button => {
                         button.classList.remove('tag-clicked');
                     });
-
-                    this.classList.add('tag-clicked');
+                    
+                    
 
                     // Check if the clicked filter is already active
                     if (selectedTag === activeFilter) {
+                        this.classList.remove('tag-clicked');
                         // If the same filter is clicked again, show all listings
                         filterListings('all');
                         activeFilter = ''; // Reset active filter
                     } else {
+                        this.classList.add('tag-clicked');
                         // Apply the new filter
                         filterListings(selectedTag);
                         activeFilter = selectedTag; // Set new active filter
