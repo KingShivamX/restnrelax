@@ -1,23 +1,33 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listing"><img src="/assets/Rent&Relax-PNG.png"></a>
+
+      <div class="image-blend">
+        <a class="navbar-brand" href="/listing"><img src="/assets/Rent&Relax-PNG2.png"></a>
+      </div>
+
+      <div class="navbar-nav">
+        <a class="nav-link restnrelax" href="/listing"><b>Rest&Relax</b></a>
+      </div>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" href="/listing">Rest&Relax</a>
-        </div>
 
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listing/new">Airbnb your Home</a>
+          <a class="nav-link auth airbnb" href="/listing/new">Rent your Home</a>
           <% if (!currentUser) { %>
-            <a class="nav-link" aria-current="page" href="/signup"><b>SignUp</b></a>
-            <a class="nav-link" href="/login"><b>LogIn</b></a>
+            <a class="nav-link auth" aria-current="page" href="/signup"><b>SignUp</b></a>
+            <a class="nav-link auth" href="/login"><b>LogIn</b></a>
           <% } %> <% if (currentUser) { %>
-            <a class="nav-link" href="/logout">LogOut</a>
+            <a class="nav-link auth" href="/logout"><b>LogOut</b></a>
+            <div class="userpic-div">
+              <img class="userpic-img" src="<%= currentUser.profile.url %>">
+            </div>
           <% } %>
         </div>
+
       </div>  
     </div>
 </nav>      

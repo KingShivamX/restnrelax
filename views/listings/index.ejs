@@ -1,121 +1,100 @@
 <%- layout("./layouts/boilorplate.ejs") %>
 <!-- its searched in views folder -->
 <!-- This is Body will be inserted in Boiler plate-->
-
 <body>
-<div id="filters">
-    <div id="Beachfront"  class="filter">
-        <div><img src="assets/beach-front.jpeg" alt=""></div>
-        <div><p>Beachfront</p></div>
-    </div>
-    <div id="Boats"  class="filter">
-        <div><img src="assets/boats.jpg" alt=""></div>
-        <div><p>Boats</p></div>
-    </div>
-    <div id="Camping"  class="filter">
-        <div><img src="assets/camping.jpg" alt=""></div>
-        <div><p>Camping</p></div>
-    </div>
-    <div id="Arctic" class="filter">
-        <div><img src="assets/arctic.jpg" alt=""></div>
-        <div><p>Arctic</p></div>
-    </div>
-    <div id="Castles"  class="filter">
-        <div><img src="assets/castles.jpeg" alt=""></div>
-        <div><p>Castles</p></div>
-    </div>
-    <div id="Farms"  class="filter">
-        <div><img src="assets/farms.jpeg" alt=""></div>
-        <div><p>Farms</p></div>
-    </div>
-    <div id="Island"  class="filter">
-        <div><img src="assets/island.jpg" alt=""></div>
-        <div><p>Island</p></div>
-    </div>
-    <div id="Mansion"  class="filter">
-        <div><img src="assets/mansion.jpg" alt=""></div>
-        <div><p>Mansion</p></div>
-    </div>
-    <div id="Rooms"  class="filter">
-        <div><img src="assets/rooms.jpg" alt=""></div>
-        <div><p>Rooms</p></div>
-    </div>
-    <div id="Towers"  class="filter">
-        <div><img src="assets/towers.jpg" alt=""></div>
-        <div><p>Towers</p></div>
-    </div>
 
-    <div class="tax-toggle">
-        <div class="form-check-reverse form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Display Taxes</label>
-          </div>
-    </div>
-</div>  
+<div id="wrapper ">
 
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-2">
-    <% for (let listing of allListing) { %>
-        <a href="/listing/<%= listing.id %>" class="listing-link" data-tags="<%= JSON.stringify(listing.tags) %>">
-            <div class="card col index-page-card">
-                <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing Image">
-                <div class="card-img-overlay">Click To Show</div>
-                <div class="card-body">
-                  <p class="card-text">
-                    <b><%= listing.title %></b><br>            
-                    <%= listing.price.toLocaleString("en-IN") %> / Night
-                    <i class="taxinfo hidden"> &nbsp; +18% GST</i>
-                  </p>
+    <div id="filters">
+        <div>
+            <div id="Beachfront"  class="filter">
+                <div><img src="assets/beach-front.jpeg" alt=""></div>
+                <div><p>Beachfront</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Boats"  class="filter">
+                <div><img src="assets/boats.jpg" alt=""></div>
+                <div><p>Boats</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Camping"  class="filter">
+                <div><img src="assets/camping.jpg" alt=""></div>
+                <div><p>Camping</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Arctic" class="filter">
+                <div><img src="assets/arctic.jpg" alt=""></div>
+                <div><p>Arctic</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Castles"  class="filter">
+                <div><img src="assets/castles.jpeg" alt=""></div>
+                <div><p>Castles</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Farms"  class="filter">
+                <div><img src="assets/farms.jpeg" alt=""></div>
+                <div><p>Farms</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Island"  class="filter">
+                <div><img src="assets/island.jpg" alt=""></div>
+                <div><p>Island</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Mansion"  class="filter">
+                <div><img src="assets/mansion.jpg" alt=""></div>
+                <div><p>Mansion</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Rooms"  class="filter">
+                <div><img src="assets/rooms.jpg" alt=""></div>
+                <div><p>Rooms</p></div>
+            </div>
+        </div>
+        <div>
+            <div id="Towers"  class="filter">
+                <div><img src="assets/towers.jpg" alt=""></div>
+                <div><p>Towers</p></div>
+            </div>
+        </div>
+        <div class="taxxx">
+            <div class="tax-toggle">
+                <div class="form-check-reverse form-switch tax-toggle-inner">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Show Taxes</label>
                 </div>
             </div>
-        </a>    
-    <% } %>
+        </div>
+    </div>  
+    
+    <div id="listing" class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <% for (let listing of allListing) { %>
+            <a href="/listing/<%= listing.id %>" class="listing-link" data-tags="<%= JSON.stringify(listing.tags) %>">
+                <div class="card col index-page-card">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing Image">
+                    <div class="card-img-overlay">Click To Show</div>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <b class="list-title"><%= listing.title %></b><br>            
+                        <b class="list-price"><%= listing.price.toLocaleString("en-IN") %> / Night</b>
+                        <i class="taxinfo hidden list-price"> &nbsp; +18% GST</i>
+                      </p>
+                    </div>
+                </div>
+            </a>    
+        <% } %>
+    </div>
+    
 </div>
+
+
 </body>
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btns = document.getElementsByClassName("filter"); //  all buttons
-            let activeFilter = ''; // Track the active filter
-
-            for (let btn of btns) {
-                btn.addEventListener('click', function() {
-                    const selectedTag = this.id;
-
-                    // converting node list to array
-                    [...btns].forEach(button => {
-                        button.classList.remove('tag-clicked');
-                    });
-                    
-                    
-
-                    // Check if the clicked filter is already active
-                    if (selectedTag === activeFilter) {
-                        this.classList.remove('tag-clicked');
-                        // If the same filter is clicked again, show all listings
-                        filterListings('all');
-                        activeFilter = ''; // Reset active filter
-                    } else {
-                        this.classList.add('tag-clicked');
-                        // Apply the new filter
-                        filterListings(selectedTag);
-                        activeFilter = selectedTag; // Set new active filter
-                    }
-                });
-            }
-
-            function filterListings(selectedTag) {
-                const listingLinks = document.querySelectorAll('.listing-link');
-
-                listingLinks.forEach(link => {
-                    const tags = JSON.parse(link.getAttribute('data-tags'));
-
-                    if (tags.includes(selectedTag) || selectedTag === 'all') {
-                        link.style.display = 'block'; // Show listing
-                    } else {
-                        link.style.display = 'none'; // Hide listing
-                    };
-                });
-            }
-        });
-    </script>

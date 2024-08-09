@@ -1,14 +1,14 @@
 <%- layout("./layouts/boilorplate.ejs") %>
 <body>
 <div class="row">
-    <div class="col col-8 offset-2">
+    <div class="col-12 col-md-8 offset-md-2">
         <br>
-    <h3>Create New Listing</h3>
-    <!-- novalidate to add bootstrap styling for 'required browser specific mesdsages'. -->
-    <!-- "needs-validation"  class too.-->
-     <!-- fom sends default data in url encoded format -->
-    <!-- enctype="multipart/form-data", is to make form capable of sending files -->
-    <form method="post" action="/listing" novalidate class="needs-validation" enctype="multipart/form-data">
+        <h3>Create New Listing</h3>
+        <!-- novalidate to add bootstrap styling for 'required browser specific mesdsages'. -->
+        <!-- "needs-validation"  class too.-->
+         <!-- fom sends default data in url encoded format -->
+        <!-- enctype="multipart/form-data", is to make form capable of sending files -->
+        <form method="post" action="/listing" novalidate class="needs-validation" enctype="multipart/form-data">
         <!-- using this a object will be sent to post, named listing, having all name:value pairs -->
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -33,7 +33,7 @@
 
         <div class="mb-3">
             <label for="tags" class="form-label">Add The Tags Using Buttons</label>
-            <div class="tag-container mb-2" >
+            <div class="tag-cont tag-container mb-2" >
                 <button class="btn btn-secondary btn-tags" id="Beachfront" type="button">Beachfront</button>
                 <button class="btn btn-secondary btn-tags" id="Boats" type="button">Boats</button>
                 <button class="btn btn-secondary btn-tags" id="Camping" type="button">Camping</button>
@@ -64,7 +64,7 @@
                 <div class="invalid-feedback">Location is Required</div>
             </div class="mb-3">
 
-            <div class="mb-6 col-md-6">
+            <div class="mb-3 col-md-6">
                 <label for="country" class="form-label">Country</label>
                 <%- include("../includes/countries.ejs") %>
                 <div class="invalid-feedback">Country is Required</div>

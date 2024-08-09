@@ -123,12 +123,12 @@ app.use("/listing/:id/review", reviewRouter);
 
 app.use("/", userRouter);
 // to manage signup signin.e
-// no parent route, because no comman api.
+// no parent route, because no common api.
 
 ///////////////////////////////////////////////////////////////
-// error handeling middlewares at last.
+// error handling middlewares at last.
 
-// standerd pager not found response
+// standard page not found response
 app.all("*", (req, res, next)=> {
     next(new ExpressError(404, "Page Not Found!"));
 });
@@ -142,9 +142,9 @@ app.use((err, req, res, next)=>{
 });
 
 ///////////////////////////////////////////////////////////////
-///////////////////// mongoDB live listning setup
+///////////////////// mongoDB live listening setup
 async function main(){
-    // await mongoose.connect("mongodb://127.0.0.1:27017/restnrelax2"); // localhost
+    // await mongoose.connect("mongodb://127.0.0.1:27017/restnrelax"); // localhost
     await mongoose.connect(dburl); // atlas cloud db.
 };
 main()

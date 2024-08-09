@@ -1,8 +1,8 @@
 <%- layout("./layouts/boilorplate.ejs") %>
 <body>
 <div class="row">
-    <div class="col col-8 offset-2">
-        <br>
+    <div class="col-12 col-md-8 offset-md-2">
+    <br>
     <h3>Edit Your Listing</h3>
     <form method="post" action="/listing/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
         <!-- using this a object will be sent to post, named listing, having all name:value pairs -->
@@ -33,7 +33,7 @@
 
         <div class="mb-3">
             <label for="tags" class="form-label">Add The Tags Using Buttons</label>
-            <div class="tag-container mb-2" >
+            <div class="tag-cont tag-container mb-2" >
                 <button class="btn btn-secondary btn-tags" id="Beachfront" type="button">Beachfront</button>
                 <button class="btn btn-secondary btn-tags" id="Boats" type="button">Boats</button>
                 <button class="btn btn-secondary btn-tags" id="Camping" type="button">Camping</button>
@@ -71,7 +71,7 @@
             </div>
             
         </div> 
-        <button class="btn btn-dark edit-btn">Edit Listing</button>
+        <button class="btn btn-dark edit-btn mt-4">Edit Listing</button>
         <br><br><br>
     </form>
 </div>

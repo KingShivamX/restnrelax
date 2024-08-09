@@ -1,13 +1,12 @@
 <%- layout("./layouts/boilorplate.ejs") %>
 <body>
 <div class="row">
-    <div class="col col-6 offset-2">
+    <div class="col-12 col-md-8 offset-md-2">
         <br>
         <h3><%= listing.title %></h3>
     </div>
-
     <!-- hotel detail -->
-    <div class="card col-6 offset-2 index-page-card">
+    <div class="card col-12 col-md-8 offset-md-2 index-page-card">
         <img src="<%= listing.image.url %>" class="card-img-top showPage-img" alt="Listing Image">
         <div class="card-body">
             <p class="card-text">
@@ -17,7 +16,6 @@
                 &#8226; <%= listing.location %> <br>
                 &#8226; <%= listing.country %> <br>
                 &#8226; <%= listing.tags.join(", ") %> <br>
-
             </p>
         </div>
     </div>
@@ -30,24 +28,24 @@
     <!-- this .equals() method comapred ObjectIds of mongodb, so better to use. -->
 <div class="row">
      <% if (currentUser && currentUser._id.equals(listing.owner.id)) {  %> 
-        <div class="show-btns mb-2 col-6 offset-2">
-            <a class="col-2 offset-0" href="/listing/<%= listing._id %>/edit"><button class="btn btn-dark show-btn1">Edit Rental</button></a>
+        <div class="show-btns col-12 col-md-8 offset-md-2">
+            <a class="me-4" href="/listing/<%= listing._id %>/edit"><button class="btn btn-dark show-btn1">Edit Rental</button></a>
         
-            <form class="col-3 offset-1" method="post" action="/listing/<%= listing._id %>?_method=DELETE">
+            <form class="" method="post" action="/listing/<%= listing._id %>?_method=DELETE">
                 <button class="btn btn-dark show-btn2">Delete Rental</button>
             </form> 
         </div>
      <% } %> 
 
      <!-- add review form --> 
-    <div class="col-6 offset-2">
-        <hr>           
+    <div class="col-12 col-md-8 offset-md-2">
+        <hr class="mt-4">           
         <% if (currentUser) { %>
             <h4>Leave a Review</h4>
-            <form class="mt-3 needs-validation" novalidate method="post" action="/listing/<%= listing._id %>/review" >
+            <form class="mt-4 needs-validation" novalidate method="post" action="/listing/<%= listing._id %>/review" >
                 <!-- Starability used for rating stars. -->
                 <!-- https://github.com/LunarLogic/starability --> 
-                <div class="mt-3 mb-3">
+                <div class="mt-2">
                 <label class="form-label" for="no-rate">Rating</label>
                 <fieldset class="starability-slot">
                     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
@@ -63,7 +61,7 @@
                     <label for="first-rate5" title="Amazing">5 stars</label>
                   </fieldset>
                 </div>
-                <div class="mt-3 mb-3">
+                <div class="">
                     <label class="form-label" for="comment">Comment</label>
                     <textarea class="form-control" name="review[comment]" placeholder="Add a Comment" id="comment" cols="30" rows="5" required></textarea>
                     <div class="invalid-feedback">Please add a Comment</div>
@@ -82,14 +80,14 @@
 
     <!-- reviews -->
     <% if (listing.review.length > 0) { %>
-        <div class="col-6 offset-2">
+        <div class="col-12 col-md-8 offset-md-2">
             <hr>
             <h4>All Reviews</h4>
             <br>    
         </div>
-        <div class="div offset-2">
+        <div>
             <% for(eachReview of listing.review) { %>
-                <div class="card col-6 mb-4 p-2">
+                <div class="card col-12 col-md-8 offset-md-2 comment-cont mb-3">
                     <div class="card-body">
                         <div class="comment">
                             <img src="<%= eachReview.author.profile.url %>" alt="">
@@ -101,7 +99,7 @@
                     <div>
                         <% if (currentUser && eachReview.author._id.toString() === currentUser._id.toString()) {  %>
                             <form method="post" action="/listing/<%= listing.id %>/review/<%= eachReview.id %>?_method=DELETE">
-                                <button class="btn btn-dark show-btn1">Delete</button>
+                                <button class="btn btn-dark show-btn1 mt-3">Delete</button>
                             </form>
                          <% } %> 
                     </div>
@@ -111,7 +109,7 @@
     <% } %>
 
     <!-- map container -->
-    <div class="col-6 offset-2 mb-4">
+    <div class="col-12 col-md-8 offset-md-2 mb-4">
         <hr>
         <h4>Where you'll be</h4>
         <!-- map container id -->
