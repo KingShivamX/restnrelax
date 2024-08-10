@@ -136,7 +136,7 @@ app.all("*", (req, res, next)=> {
 // middleware to handelk error
 app.use((err, req, res, next)=>{
     let {status = 500, message = "Something Went Wrong"} = err;
-    console.log(err.stack) // that whole info where error started.
+    // console.log(err.stack) // that whole info where error started.
     // console.log("=>", err.message, "=>", err.status, "=>", err.name);
     res.status(status).render("./listings/error.ejs", { err });
 });
