@@ -1,12 +1,4 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "config": {
-        "buildCommand": "npm install"
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
