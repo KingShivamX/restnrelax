@@ -209,6 +209,10 @@ footer {
 
 /* new page */
 
+.btn-secondary {
+    background-color: #ffbbc7 !important;
+}
+
 .tag-check {
     background-color: #FF385C !important;
 }
