@@ -27,5 +27,6 @@ Rest&Relax is a full-stack hotel and villa rental website designed for tourists.
    ```bash
    git clone https://github.com/KingShivamX/restnrelax.git
    cd restnrelax
+   npm install
    node app.js
    
