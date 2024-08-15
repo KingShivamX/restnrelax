@@ -4,7 +4,7 @@ if (process.env.NODE_ENV != "production") {
 };
 // requiring packages
 const express = require("express");
-const ejsMate = require("ejs-mate");        
+const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
@@ -12,21 +12,21 @@ const Listing = require("./models/listing.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
 const Joi = require("joi");
-const {listingSchema, reviewSchema} = require("./utils/schemaValidate.js");
+const { listingSchema, reviewSchema } = require("./utils/schemaValidate.js");
 const Review = require("./models/review.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const session = require("express-session");
-const MongoStore = require('connect-mongo'); 
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStatergy = require("passport-local");
 const passportLocalMongoose = require("passport-local-mongoose");
 const User = require("./models/user.js");
 const userRouter = require("./routes/user.js");
-const {loginCheck, saveRedirectUrl} = require("./utils/middleware.js");
-const {ownerCheck, authorCheck} = require("./utils/middleware.js");
-const {validateListing, validateReview} = require("./utils/middleware.js");
+const { loginCheck, saveRedirectUrl } = require("./utils/middleware.js");
+const { ownerCheck, authorCheck } = require("./utils/middleware.js");
+const { validateListing, validateReview } = require("./utils/middleware.js");
 const listingController = require("./controllers/listing.js");
 const reviewController = require("./controllers/reviews.js");
 const userController = require("./controllers/user.js");
@@ -36,7 +36,7 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 
 ///////////////////////////////////////////////////////////////
 // express options
-const app = express(); 
+const app = express();
 const port = 3000;
 
 // mongo atlas url
@@ -51,7 +51,7 @@ const store = MongoStore.create({
     touchAfter: 24 * 3600, // in seconds, session update after 24 hours.
 }); // this information should be passed in session
 
-store.on("error", ()=>{
+store.on("error", () => {
     console.log("ERROR in MONGO SESSION STORE", err)
 }); // if error
 
@@ -73,7 +73,7 @@ const sessionOptions = {
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "/public")));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate); // this does the work of Includes in EJS.
 app.use(session(sessionOptions)); // express session manager.
@@ -96,7 +96,7 @@ passport.deserializeUser(User.deserializeUser());
 // deserializeUser will remove user information after session expires.
 
 ////// flash middlewares
-app.use((req, res, next)=> {
+app.use((req, res, next) => {
     res.locals.successMsg = req.flash("success");
     // this successMsg is array having success value in string.
     res.locals.errorMsg = req.flash("error");
@@ -129,13 +129,13 @@ app.use("/", userRouter);
 // error handling middlewares at last.
 
 // standard page not found response
-app.all("*", (req, res, next)=> {
+app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Found!"));
 });
 
 // middleware to handelk error
-app.use((err, req, res, next)=>{
-    let {status = 500, message = "Something Went Wrong"} = err;
+app.use((err, req, res, next) => {
+    let { status = 500, message = "Something Went Wrong" } = err;
     // console.log(err.stack) // that whole info where error started.
     // console.log("=>", err.message, "=>", err.status, "=>", err.name);
     res.status(status).render("./listings/error.ejs", { err });
@@ -143,17 +143,17 @@ app.use((err, req, res, next)=>{
 
 ///////////////////////////////////////////////////////////////
 ///////////////////// mongoDB live listening setup
-async function main(){
+async function main() {
     // await mongoose.connect("mongodb://127.0.0.1:27017/restnrelax"); // localhost
     await mongoose.connect(dburl); // atlas cloud db.
 };
 main()
-.then((res) => console.log("Connected Established"))
-.catch((err) => console.log(err));
+    .then((res) => console.log("Connected Established"))
+    .catch((err) => console.log(err));
 
 ///////////////////////////////////////////////////////////////
 ///////////////////// express live listning setup
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`Port is Listening at: ${port}`);
 });
 
